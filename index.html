@@ -85,37 +85,57 @@
         /* ===== NAVIGATION ===== */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            width: calc(100% - 2rem);
+            max-width: 1200px;
             z-index: 1000;
-            background: rgba(10, 10, 15, 0.72);
+            background: rgba(10, 10, 15, 0.5);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: navEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes navEntrance {
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
         
         .navbar.scrolled {
-            background: rgba(10, 10, 15, 0.88);
-            backdrop-filter: saturate(200%) blur(30px);
-            -webkit-backdrop-filter: saturate(200%) blur(30px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            top: 10px;
+            background: rgba(10, 10, 15, 0.85);
+            width: calc(100% - 1.5rem);
+            border-color: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+                        0 0 20px -5px rgba(124, 58, 237, 0.1);
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 48px;
-        }
-        
-        @media (max-width: 600px) {
-            .nav-inner { padding: 0 1rem; }
+            padding: 0.7rem 1.5rem;
+            height: 64px;
+            transition: height 0.4s ease;
         }
 
         .logo {
@@ -131,7 +151,11 @@
             gap: 0.5rem;
             z-index: 1001;
         }
-        .logo:hover { opacity: 0.8; }
+        .navbar.scrolled .nav-inner {
+            height: 56px;
+        }
+
+        .logo:hover { opacity: 0.8; transform: scale(1.02); }
         .logo-dot {
             width: 6px; height: 6px;
             background: var(--accent-gradient);
@@ -147,38 +171,67 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
         }
+
+        .nav-links li {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: linkFadeIn 0.5s ease forwards;
+        }
+
+        /* Staggered Delay für die Links */
+        .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links li:nth-child(2) { animation-delay: 0.15s; }
+        .nav-links li:nth-child(3) { animation-delay: 0.2s; }
+        .nav-links li:nth-child(4) { animation-delay: 0.25s; }
+        .nav-links li:nth-child(5) { animation-delay: 0.3s; }
+        .nav-links li:nth-child(6) { animation-delay: 0.35s; }
+
+        @keyframes linkFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .nav-links a {
             color: #d2d2d7;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 400;
-            letter-spacing: 0.2px;
-            transition: color 0.25s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            position: relative;
+            padding: 0.4rem 0;
         }
-        .nav-links a:hover { color: #ffffff; }
+        .nav-links a:hover { color: #ffffff; transform: translateY(-1px); }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
         
         .nav-contact-btn {
             background: var(--accent-gradient);
             color: #fff !important;
-            padding: 0.45rem 1.2rem !important;
-            border-radius: 980px !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 12px !important;
             font-size: 0.78rem !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             letter-spacing: 0.2px !important;
             transition: all 0.3s ease !important;
-            box-shadow: 0 2px 8px rgba(124,58,237,0.2);
+            box-shadow: 0 4px 12px rgba(124,58,237,0.2);
         }
         .nav-contact-btn:hover {
             transform: scale(1.04);
             box-shadow: 0 4px 16px rgba(124,58,237,0.35);
             color: #fff !important;
+            transform: translateY(-1px);
         }
 
         .nav-spacer {
@@ -607,16 +660,17 @@
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
             <a href="#" class="logo">LS<span class="logo-dot"></span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Startseite</a></li>
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#certs">Zertifikate</a></li>
-                <li><a href="#skills">Fähigkeiten</a></li>
-                <li><a href="#piano">Klavier</a></li>
-                <li><a href="#contact" class="nav-contact-btn">Kontakt</a></li>
-            </ul>
-            <div class="nav-spacer"></div>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#certs">Zertifikate</a></li>
+                    <li><a href="#skills">Fähigkeiten</a></li>
+                    <li><a href="#piano">Klavier</a></li>
+                    <li><a href="#contact" class="nav-contact-btn">Kontakt</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            </div>
         </div>
     </nav>
 
