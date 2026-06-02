@@ -10,13 +10,16 @@
     <meta name="keywords" content="Leon Schmidt, Leon Schmidt Nürnberg, Leon Schmidt Entwickler, Leon Schmidt Klavier, Johann-Pachelbel-Realschule">
     <meta name="author" content="Leon Schmidt">
     <link rel="canonical" href="https://leon-schmidt.vercel.app">
+    <meta name="robots" content="index, follow">
     
-    <!-- Favicon Reparatur (Stellt sicher, dass das Icon geladen wird) -->
-    <link rel="icon" type="image/x-icon" href="Objekt.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="Objekt.ico">
+    <!-- Favicon Reparatur & Google SEO -->
+    <link rel="icon" href="https://leon-schmidt.vercel.app/Objekt.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://leon-schmidt.vercel.app/Objekt.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://leon-schmidt.vercel.app/Objekt.ico">
 
     <!-- Open Graph (Optimiert das Aussehen bei Google & Social Media) -->
-    <meta property="og:title" content="Leon Schmidt | Portfolio – Schüler & Entwickler">
+    <meta property="og:site_name" content="Leon Schmidt">
+    <meta property="og:title" content="Leon Schmidt | Portfolio">
     <meta property="og:description" content="Entdecke meine Projekte in der Web-Entwicklung und meine Leidenschaft für das Klavierspielen.">
     <meta property="og:url" content="https://leon-schmidt.vercel.app">
     <meta property="og:type" content="website">
@@ -34,6 +37,14 @@
         "@type": "Place",
         "name": "Nürnberg, Deutschland"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Leon Schmidt",
+      "url": "https://leon-schmidt.vercel.app"
     }
     </script>
     
@@ -181,6 +192,12 @@
             align-items: center;
             gap: 0.5rem;
             z-index: 1001;
+        }
+        .logo-img {
+            height: 32px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
         }
         .navbar.scrolled .nav-inner {
             height: 56px;
@@ -690,7 +707,10 @@
 
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
-            <a href="#" class="logo">LS<span class="logo-dot"></span></a>
+            <a href="#" class="logo">
+                <img src="Objekt.ico" alt="Leon Schmidt Logo" class="logo-img">
+                <span>Leon Schmidt</span>
+            </a>
             <div class="nav-right">
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Startseite</a></li>
