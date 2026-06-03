@@ -229,7 +229,6 @@
             animation: linkFadeIn 0.5s ease forwards;
         }
 
-        /* Staggered Delay für die Links */
         .nav-links li:nth-child(1) { animation-delay: 0.1s; }
         .nav-links li:nth-child(2) { animation-delay: 0.15s; }
         .nav-links li:nth-child(3) { animation-delay: 0.2s; }
@@ -705,23 +704,6 @@
             animation: none;
         }
 
-        .chatbot-toggle .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ef4444;
-            color: white;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            display: none;
-        }
-
         .chatbot-window {
             position: absolute;
             bottom: 80px;
@@ -743,14 +725,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .chatbot-header {
@@ -820,18 +796,9 @@
             gap: 12px;
         }
 
-        .chatbot-messages::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .chatbot-messages::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chatbot-messages::-webkit-scrollbar-thumb {
-            background: rgba(124, 58, 237, 0.3);
-            border-radius: 10px;
-        }
+        .chatbot-messages::-webkit-scrollbar { width: 4px; }
+        .chatbot-messages::-webkit-scrollbar-track { background: transparent; }
+        .chatbot-messages::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.3); border-radius: 10px; }
 
         .chat-message {
             max-width: 85%;
@@ -844,14 +811,8 @@
         }
 
         @keyframes messageIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .chat-message.bot {
@@ -876,36 +837,19 @@
             padding: 16px 20px;
         }
 
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-
+        .typing-dots { display: flex; gap: 4px; }
         .typing-dots span {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--accent-light);
             border-radius: 50%;
             animation: typingDot 1.4s infinite;
         }
-
-        .typing-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes typingDot {
-            0%, 60%, 100% {
-                opacity: 0.3;
-                transform: scale(0.8);
-            }
-            30% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+            0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+            30% { opacity: 1; transform: scale(1.2); }
         }
 
         .chatbot-suggestions {
@@ -961,8 +905,7 @@
         }
 
         .chatbot-send {
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             border-radius: 50%;
             background: var(--accent-gradient);
             border: none;
@@ -994,15 +937,8 @@
                 right: -10px;
                 bottom: 80px;
             }
-            
-            .chatbot-suggestions {
-                padding: 6px 10px;
-            }
-            
-            .suggestion-chip {
-                font-size: 0.65rem;
-                padding: 5px 10px;
-            }
+            .chatbot-suggestions { padding: 6px 10px; }
+            .suggestion-chip { font-size: 0.65rem; padding: 5px 10px; }
         }
     </style>
 </head>
@@ -1204,9 +1140,9 @@
 
     <section class="stats-full">
         <div class="container">
-            <div class="section-header reveal"><span class="section-tag">Erfolge</span><h2>Zahlen, die <span class="gradient-text">zählen</span></h2></div>
+            <div class="section-header reveal"><span class="section-tag">IT-Erfolge</span><h2>Zahlen, die <span class="gradient-text">zählen</span></h2></div>
             <div class="stats-full-grid">
-                <div class="stat-full-card reveal reveal-delay-1"><div class="stat-full-icon">⏱️</div><div class="stat-full-number" data-target="240">0</div><div class="stat-full-label">Übungsstunden</div></div>
+                <div class="stat-full-card reveal reveal-delay-1"><div class="stat-full-icon">⏱️</div><div class="stat-full-number" data-target="240">0</div><div class="stat-full-label">Übungsstunden (IT)</div></div>
                 <div class="stat-full-card reveal reveal-delay-2"><div class="stat-full-icon">📜</div><div class="stat-full-number" data-target="2">0</div><div class="stat-full-label">Zertifikate</div></div>
                 <div class="stat-full-card reveal reveal-delay-3"><div class="stat-full-icon">📅</div><div class="stat-full-number" data-target="4">0</div><div class="stat-full-label">Studienjahre</div></div>
                 <div class="stat-full-card reveal reveal-delay-4"><div class="stat-full-icon">🚀</div><div class="stat-full-number" data-target="15">0</div><div class="stat-full-label">Projekte</div></div>
@@ -1297,42 +1233,31 @@
 
     <!-- KI CHATBOT -->
     <div class="chatbot-container" id="chatbotContainer">
-        <button class="chatbot-toggle" id="chatbotToggle" title="Chat mit Leon's Assistant">
-            🤖
-        </button>
+        <button class="chatbot-toggle" id="chatbotToggle" title="Chat mit Leon's Assistant">🤖</button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
                 <div class="chatbot-header-info">
                     <h3>🤖 Leon's Assistant</h3>
-                    <div class="status">
-                        <span class="status-dot"></span>
-                        Online - Bereit für Fragen
-                    </div>
+                    <div class="status"><span class="status-dot"></span>Online - Bereit für Fragen</div>
                 </div>
                 <button class="chatbot-close" id="chatbotClose">✕</button>
             </div>
             
             <div class="chatbot-suggestions" id="chatbotSuggestions">
-                <span class="suggestion-chip" data-question="Was sind Leons Fähigkeiten?">💻 Fähigkeiten</span>
-                <span class="suggestion-chip" data-question="Welche Programmiersprachen kann Leon?">🚀 Skills</span>
-                <span class="suggestion-chip" data-question="Wie kann ich Leon kontaktieren?">📧 Kontakt</span>
+                <span class="suggestion-chip" data-question="Was sind Leons IT-Fähigkeiten?">💻 IT-Skills</span>
                 <span class="suggestion-chip" data-question="Welche Klavierstücke spielt Leon?">🎹 Klavier</span>
+                <span class="suggestion-chip" data-question="Wie kann ich Leon kontaktieren?">📧 Kontakt</span>
+                <span class="suggestion-chip" data-question="Erzähl mir mehr über Leon">👤 Über Leon</span>
             </div>
             
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="chat-message bot">
-                    Hallo! 👋 Ich bin Leon's virtueller Assistant. Frag mich etwas über Leon, seine Fähigkeiten, Projekte oder wie du ihn kontaktieren kannst!
+                    Hallo! 👋 Ich bin Leon's virtueller Assistant. Frag mich etwas über Leon, seine IT-Fähigkeiten, Klavierspiel oder wie du ihn kontaktieren kannst!
                 </div>
             </div>
             
             <div class="chatbot-input-area">
-                <input 
-                    type="text" 
-                    class="chatbot-input" 
-                    id="chatbotInput" 
-                    placeholder="Schreib eine Nachricht..."
-                    autocomplete="off"
-                >
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Schreib eine Nachricht..." autocomplete="off">
                 <button class="chatbot-send" id="chatbotSend">➤</button>
             </div>
         </div>
@@ -1375,25 +1300,16 @@
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-
                 const submitBtn = contactForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
-
                 submitBtn.textContent = "📤 Wird gesendet...";
                 submitBtn.disabled = true;
                 formStatus.style.color = "var(--accent-light)";
                 formStatus.textContent = "Sende Nachricht...";
-
                 const formData = new FormData(contactForm);
-
                 try {
-                    const response = await fetch("https://api.web3forms.com/submit", {
-                        method: "POST",
-                        body: formData
-                    });
-
+                    const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
                     const data = await response.json();
-
                     if (response.ok && data.success) {
                         formStatus.style.color = "#10b981";
                         formStatus.textContent = "✅ Nachricht erfolgreich gesendet! Ich melde mich bald.";
@@ -1408,14 +1324,12 @@
                 } finally {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
-                    setTimeout(() => {
-                        formStatus.textContent = "";
-                    }, 5000);
+                    setTimeout(() => { formStatus.textContent = ""; }, 5000);
                 }
             });
         }
 
-        // ===== KI CHATBOT (OHNE API - Regelbasiert) =====
+        // ===== KI CHATBOT (4 THEMEN: IT-Skills, Klavier, Kontakt, Über Leon) =====
         class SmartChatbot {
             constructor() {
                 this.chatbotToggle = document.getElementById('chatbotToggle');
@@ -1425,85 +1339,110 @@
                 this.chatbotInput = document.getElementById('chatbotInput');
                 this.chatbotSend = document.getElementById('chatbotSend');
                 this.suggestionChips = document.querySelectorAll('.suggestion-chip');
-                
                 this.isOpen = false;
                 this.isTyping = false;
                 
-                // Wissensdatenbank über Leon
+                // ═══════════════════════════════════════
+                // WISSENSDATENBANK - 4 Themen
+                // ═══════════════════════════════════════
                 this.knowledgeBase = {
                     greetings: [
-                        "Hey! 👋 Schön, dass du da bist! Was möchtest du über Leon wissen?",
+                        "Hey! 👋 Schön, dass du da bist! Frag mich zu IT-Skills, Klavier, Kontakt oder über Leon!",
                         "Hallo! 😊 Ich bin Leon's Assistant. Wie kann ich dir helfen?",
-                        "Hi! Freut mich, dass du vorbeischaust! Frag mich ruhig alles über Leon.",
+                        "Hi! Freut mich! Klick auf einen Button oder schreib mir deine Frage!",
                     ],
-                    
                     farewell: [
                         "Tschüss! 👋 Komm bald wieder vorbei!",
                         "Bis später! Wenn du mehr Fragen hast, ich bin immer hier! 😊",
                         "Auf Wiedersehen! Viel Erfolg noch! 🚀",
                     ],
                     
-                    skills: "Leon hat vielseitige Fähigkeiten in der Webentwicklung und Programmierung:\n\n" +
-                           "🎨 Frontend:\n" +
-                           "• HTML5 (60%)\n" +
-                           "• CSS3 (60%)\n" +
-                           "• JavaScript (50%)\n" +
-                           "• React (40%)\n\n" +
-                           "⚙️ Backend:\n" +
-                           "• Python (57%)\n" +
-                           "• OOP (30%)\n\n" +
-                           "🛠️ Tools:\n" +
-                           "• VS Code (70%)\n" +
-                           "• Git (25%)\n\n" +
-                           "Aktuell lernt er: Node.js, TypeScript, APIs & Datenbanken! 📚",
+                    // 💻 IT-SKILLS
+                    itSkills: "💻 LEONS IT-SKILLS:\n\n" +
+                             "🎨 Frontend:\n" +
+                             "• HTML5 – 60%\n" +
+                             "• CSS3 – 60%\n" +
+                             "• JavaScript – 50%\n" +
+                             "• React – 40%\n\n" +
+                             "⚙️ Backend:\n" +
+                             "• Python – 57%\n" +
+                             "• OOP – 30%\n" +
+                             "• File Systems – 35%\n\n" +
+                             "🛠️ Tools:\n" +
+                             "• VS Code – 70%\n" +
+                             "• Git – 25%\n" +
+                             "• Responsive Design – 46%\n\n" +
+                             "📊 Erfolge:\n" +
+                             "• 240+ Übungsstunden (IT)\n" +
+                             "• 2 Zertifikate (Skysmart)\n" +
+                             "• 4 Jahre Studienzeit\n" +
+                             "• 15+ Projekte\n\n" +
+                             "📚 Lernt aktuell: Node.js, TypeScript, APIs, Datenbanken!",
                     
-                    about: "Leon Schmidt ist ein engagierter Schüler der 10. Klasse an der Johann-Pachelbel-Realschule in Nürnberg. 🏫\n\n" +
-                           "Er verbindet seine Leidenschaft für Technologie mit Musik. Neben dem Programmieren spielt er leidenschaftlich Klavier und betreibt einen YouTube-Kanal (@pianoplayer-09).\n\n" +
-                           "Seine Stärken liegen in der Webentwicklung und Python-Programmierung, die er durch 2-jährige Zertifikatsprogramme bei Skysmart vertieft hat. 🚀",
-                    
-                    contact: "📬 So kannst du Leon erreichen:\n\n" +
-                            "📧 E-Mail: Schmidtleon970@gmail.com\n" +
-                            "📞 Telefon: +49 155 66316521\n" +
-                            "📍 Standort: Nürnberg, Deutschland\n\n" +
-                            "Oder nutze das Kontaktformular auf der Webseite! ✉️",
-                    
-                    piano: "🎹 Leon's musikalische Reise:\n\n" +
+                    // 🎹 KLAVIER
+                    piano: "🎹 LEONS KLAVIER:\n\n" +
                            "Lieblingsstücke:\n" +
-                           "• Für Elise - Beethoven\n" +
-                           "• Clair de Lune - Debussy\n" +
-                           "• River Flows In You - Yiruma\n" +
-                           "• Canon in D - Pachelbel\n\n" +
+                           "• Für Elise – Beethoven (Mittel)\n" +
+                           "• Clair de Lune – Debussy (Fortg.)\n" +
+                           "• River Flows In You – Yiruma (Mittel)\n" +
+                           "• Canon in D – Pachelbel (Mittel)\n\n" +
                            "Fähigkeiten:\n" +
                            "• Klassisches Klavier: ⭐⭐⭐⭐☆\n" +
                            "• Moderne Lieder: ⭐⭐⭐⭐☆\n" +
                            "• Improvisation: ⭐⭐⭐⭐☆\n\n" +
-                           "🎥 YouTube: @pianoplayer-09\n" +
-                           "Über 240 Übungsstunden!",
+                           "🎥 YouTube-Kanal:\n" +
+                           "@pianoplayer-09\n\n" +
+                           "Leon spielt seit mehreren Jahren Klavier als kreativen Ausgleich zum Programmieren!",
                     
-                    certificates: "📜 Leons Zertifikate:\n\n" +
-                                 "1. Web-Entwicklungsprogramm (Skysmart)\n" +
-                                 "   ⏱️ 2 Jahre | 📚 120 Sitzungen\n" +
-                                 "   Skills: HTML, CSS, JavaScript, Responsive Design\n\n" +
-                                 "2. Python Programmierung (Skysmart)\n" +
-                                 "   ⏱️ 2 Jahre | 📚 120 Sitzungen\n" +
-                                 "   Skills: Python, OOP, Data Structures, Functions\n\n" +
-                                 "Beide Zertifikate zeigen seine kontinuierliche Lernbereitschaft! 🎓",
+                    // 📧 KONTAKT
+                    contact: "📧 LEON KONTAKTIEREN:\n\n" +
+                             "📧 E-Mail:\n" +
+                             "Schmidtleon970@gmail.com\n\n" +
+                             "📞 Telefon:\n" +
+                             "+49 155 66316521\n\n" +
+                             "📍 Standort:\n" +
+                             "Nürnberg, Deutschland\n" +
+                             "Zerzabelshofer Haupt Straße 12\n\n" +
+                             "✉️ Oder nutze das Kontaktformular\n" +
+                             "auf der Webseite!\n\n" +
+                             "📱 Social Media:\n" +
+                             "YouTube: @pianoplayer-09",
                     
-                    projects: "🚀 Leon hat über 15 Projekte umgesetzt! Darunter:\n\n" +
-                             "• Portfolio-Webseite (diese Seite!)\n" +
-                             "• Webentwicklungs-Projekte\n" +
-                             "• Python-Programme und Skripte\n" +
-                             "• Klavier-Lernmaterialien\n\n" +
-                             "Aktuell arbeitet er an Projekten mit Node.js und TypeScript! 💡",
+                    // 👤 ÜBER LEON
+                    about: "👤 ÜBER LEON SCHMIDT:\n\n" +
+                           "🏫 Schule:\n" +
+                           "10. Klasse\n" +
+                           "Johann-Pachelbel-Realschule\n" +
+                           "Nürnberg\n\n" +
+                           "💻 IT:\n" +
+                           "Web-Entwickler & Python-Programmierer\n" +
+                           "2 Zertifikate von Skysmart\n" +
+                           "240+ Übungsstunden\n" +
+                           "4 Jahre Studienzeit\n" +
+                           "15+ Projekte\n\n" +
+                           "🎹 Musik:\n" +
+                           "Leidenschaftlicher Pianist\n" +
+                           "YouTube: @pianoplayer-09\n\n" +
+                           "📌 Sprachen: 3+\n" +
+                           "📌 Standort: Nürnberg, Deutschland\n\n" +
+                           "✨ Leon verbindet Technologie mit Musik!",
                     
-                    school: "🏫 Leon besucht die 10. Klasse der Johann-Pachelbel-Realschule in Nürnberg.\n\n" +
-                           "Die Schule ist nach dem berühmten Komponisten Johann Pachelbel benannt - passend zu Leons musikalischer Leidenschaft! 🎵\n\n" +
-                           "Seine Studienzeit beträgt 4 Jahre mit kontinuierlichem Fokus auf Technologie und Programmierung.",
+                    // Hilfe
+                    help: "📋 THEMEN ZUR AUSWAHL:\n\n" +
+                          "💻 IT-Skills\n" +
+                          "→ Leons Programmiersprachen & Erfolge\n\n" +
+                          "🎹 Klavier\n" +
+                          "→ Lieblingsstücke & Fähigkeiten\n\n" +
+                          "📧 Kontakt\n" +
+                          "→ E-Mail, Telefon, Adresse\n\n" +
+                          "👤 Über Leon\n" +
+                          "→ Persönliche Infos & Hintergrund\n\n" +
+                          "Klick einfach auf einen Button oben! 😊",
                     
                     unknown: [
-                        "Interessante Frage! 🤔 Dazu habe ich leider keine spezifischen Informationen. Aber frag mich gerne etwas über Leons Fähigkeiten, Klavierspiel oder Kontaktmöglichkeiten!",
-                        "Hmm, da bin ich überfragt. 😅 Aber ich kann dir viel über Leons Programmier-Skills, Musik oder Ausbildung erzählen!",
-                        "Gute Frage! Leider kann ich dazu nichts sagen. Möchtest du stattdessen etwas über Leons Projekte oder Zertifikate erfahren?",
+                        "Dazu habe ich leider keine Infos. 😅 Frag mich zu IT-Skills, Klavier, Kontakt oder über Leon!",
+                        "Hmm, da bin ich überfragt. 🤔 Klick auf einen der Buttons oder frag zu den 4 Themen!",
+                        "Keine Antwort darauf. Aber ich kann dir zu IT, Klavier, Kontakt oder Leon's Person helfen! 💡",
                     ]
                 };
                 
@@ -1511,7 +1450,6 @@
             }
             
             init() {
-                // Event Listener
                 this.chatbotToggle.addEventListener('click', () => this.toggleChat());
                 this.chatbotClose.addEventListener('click', () => this.closeChat());
                 this.chatbotSend.addEventListener('click', () => this.sendMessage());
@@ -1521,8 +1459,6 @@
                         this.sendMessage();
                     }
                 });
-                
-                // Suggestion Chips
                 this.suggestionChips.forEach(chip => {
                     chip.addEventListener('click', () => {
                         const question = chip.getAttribute('data-question');
@@ -1532,22 +1468,14 @@
                 });
             }
             
-            toggleChat() {
-                if (this.isOpen) {
-                    this.closeChat();
-                } else {
-                    this.openChat();
-                }
-            }
+            toggleChat() { this.isOpen ? this.closeChat() : this.openChat(); }
             
             openChat() {
                 this.chatbotWindow.classList.add('active');
                 this.chatbotToggle.classList.add('active');
                 this.chatbotToggle.textContent = '✕';
                 this.isOpen = true;
-                setTimeout(() => {
-                    this.chatbotInput.focus();
-                }, 300);
+                setTimeout(() => this.chatbotInput.focus(), 300);
             }
             
             closeChat() {
@@ -1559,27 +1487,17 @@
             
             async sendMessage() {
                 if (this.isTyping) return;
-                
                 const message = this.chatbotInput.value.trim();
                 if (!message) return;
-                
                 this.chatbotInput.value = '';
                 this.isTyping = true;
                 this.chatbotSend.disabled = true;
-                
-                // Benutzernachricht anzeigen
                 this.addMessage(message, 'user');
-                
-                // Tippindikator
                 const typingIndicator = this.addTypingIndicator();
-                
-                // Simulierte Verzögerung für natürlichere Antwort
-                const delay = Math.random() * 1000 + 500;
-                
+                const delay = Math.random() * 800 + 400;
                 setTimeout(() => {
                     typingIndicator.remove();
-                    const response = this.generateResponse(message);
-                    this.addMessage(response, 'bot');
+                    this.addMessage(this.generateResponse(message), 'bot');
                     this.isTyping = false;
                     this.chatbotSend.disabled = false;
                 }, delay);
@@ -1588,98 +1506,61 @@
             generateResponse(message) {
                 const msg = message.toLowerCase();
                 
-                // Begrüßungen
-                if (this.containsAny(msg, ['hallo', 'hi', 'hey', 'guten tag', 'guten morgen', 'guten abend', 'moin', 'servus'])) {
-                    return this.getRandomResponse('greetings');
+                // 💻 IT-SKILLS (muss VOR Begrüßung geprüft werden, wegen "sind" etc.)
+                if (this.containsAny(msg, ['it-skill','it-fähigkeit','skill','fähigkeit','programmier','html','css','javascript','python','react','node','typescript','frontend','backend','tool','git','vscode','responsive','code','entwickler','web-entwickler','programmiersprache','technisch','it','erfolg','erfolge','übungsstunde','projekt','zertifikat','studienjahr','skysmart','oop','file'])) {
+                    return this.knowledgeBase.itSkills;
                 }
                 
-                // Verabschiedungen
-                if (this.containsAny(msg, ['tschüss', 'bye', 'auf wiedersehen', 'bis bald', 'ciao', 'mach\'s gut'])) {
-                    return this.getRandomResponse('farewell');
-                }
-                
-                // Fähigkeiten & Skills
-                if (this.containsAny(msg, ['fähigkeiten', 'skills', 'was kann', 'programmieren', 'programmiersprache', 'html', 'css', 'javascript', 'python', 'react'])) {
-                    return this.knowledgeBase.skills;
-                }
-                
-                // Über Leon
-                if (this.containsAny(msg, ['über', 'about', 'wer ist', 'person', 'beschreibung', 'vorstellen'])) {
-                    return this.knowledgeBase.about;
-                }
-                
-                // Kontakt
-                if (this.containsAny(msg, ['kontakt', 'email', 'mail', 'telefon', 'erreichen', 'anschreiben', 'nummer', 'adresse'])) {
-                    return this.knowledgeBase.contact;
-                }
-                
-                // Klavier & Musik
-                if (this.containsAny(msg, ['klavier', 'piano', 'musik', 'klavierstück', 'beethoven', 'debussy', 'yiruma', 'pachelbel', 'youtube'])) {
+                // 🎹 KLAVIER
+                if (this.containsAny(msg, ['klavier','piano','musik','beethoven','debussy','yiruma','pachelbel','youtube','stück','lied','komponist','musikalisch','pianist','improvisation','klassisch'])) {
                     return this.knowledgeBase.piano;
                 }
                 
-                // Zertifikate
-                if (this.containsAny(msg, ['zertifikat', 'ausbildung', 'kurs', 'skysmart', 'abschluss'])) {
-                    return this.knowledgeBase.certificates;
+                // 📧 KONTAKT
+                if (this.containsAny(msg, ['kontakt','email','mail','telefon','nummer','adresse','standort','erreichen','anschreiben','social'])) {
+                    return this.knowledgeBase.contact;
                 }
                 
-                // Projekte
-                if (this.containsAny(msg, ['projekt', 'projekte', 'arbeit', 'portfolio'])) {
-                    return this.knowledgeBase.projects;
+                // 👤 ÜBER LEON
+                if (this.containsAny(msg, ['über','about','leon','person','wer ist','beschreibung','vorstellen','erzähl','hintergrund','schule','klasse','realschule','johann','nürnberg','schüler'])) {
+                    return this.knowledgeBase.about;
                 }
                 
-                // Schule
-                if (this.containsAny(msg, ['schule', 'klasse', 'realschule', 'johann', 'ausbildung', 'lernen'])) {
-                    return this.knowledgeBase.school;
+                // Begrüßung (erst NACH den Themen-Prüfungen!)
+                if (this.containsAny(msg, ['hallo','hi','hey','guten tag','moin','servus'])) return this.getRandom('greetings');
+                
+                // Verabschiedung
+                if (this.containsAny(msg, ['tschüss','bye','ciao','mach\'s gut','bis bald'])) return this.getRandom('farewell');
+                
+                // HILFE
+                if (this.containsAny(msg, ['hilfe','help','was kannst du','themen','optionen','möglichkeiten','info'])) {
+                    return this.knowledgeBase.help;
                 }
                 
-                // Hilfe
-                if (this.containsAny(msg, ['hilfe', 'help', 'was kannst du', 'fragen', 'optionen'])) {
-                    return "Ich kann dir Fragen beantworten zu:\n\n" +
-                           "💻 Leons Fähigkeiten & Skills\n" +
-                           "🎹 Klavierspiel & Musik\n" +
-                           "📜 Zertifikate & Ausbildung\n" +
-                           "📧 Kontaktmöglichkeiten\n" +
-                           "🚀 Projekte\n" +
-                           "🏫 Schule\n\n" +
-                           "Klick auch gerne auf die Vorschläge oben! 😊";
-                }
-                
-                // Standardantwort
-                return this.getRandomResponse('unknown');
-            }
+                return this.getRandom('unknown');
+            } 
             
-            containsAny(text, keywords) {
-                return keywords.some(keyword => text.includes(keyword));
-            }
-            
-            getRandomResponse(category) {
-                const responses = this.knowledgeBase[category];
-                if (Array.isArray(responses)) {
-                    return responses[Math.floor(Math.random() * responses.length)];
-                }
-                return responses;
+            containsAny(text, keywords) { return keywords.some(k => text.includes(k)); }
+            getRandom(cat) {
+                const r = this.knowledgeBase[cat];
+                return Array.isArray(r) ? r[Math.floor(Math.random() * r.length)] : r;
             }
             
             addMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `chat-message ${sender}`;
-                messageDiv.textContent = text;
-                this.chatbotMessages.appendChild(messageDiv);
-                this.scrollToBottom();
+                const div = document.createElement('div');
+                div.className = `chat-message ${sender}`;
+                div.textContent = text;
+                this.chatbotMessages.appendChild(div);
+                this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
             }
             
             addTypingIndicator() {
-                const indicator = document.createElement('div');
-                indicator.className = 'chat-message typing';
-                indicator.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
-                this.chatbotMessages.appendChild(indicator);
-                this.scrollToBottom();
-                return indicator;
-            }
-            
-            scrollToBottom() {
+                const div = document.createElement('div');
+                div.className = 'chat-message typing';
+                div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+                this.chatbotMessages.appendChild(div);
                 this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
+                return div;
             }
         }
 
