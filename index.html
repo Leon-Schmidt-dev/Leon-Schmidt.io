@@ -661,6 +661,349 @@
             .cta-inner{padding:1.5rem 1rem}
             .music-grid{grid-template-columns:1fr}
         }
+
+        /* ===== KI CHATBOT STYLES ===== */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(124, 58, 237, 0.7); }
+            100% { box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4); }
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.6);
+        }
+
+        .chatbot-toggle.active {
+            transform: rotate(360deg);
+            animation: none;
+        }
+
+        .chatbot-toggle .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            display: none;
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: var(--bg-card);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: var(--accent-gradient);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header-info h3 {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .chatbot-header-info .status {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chatbot-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: var(--bg-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
+        }
+
+        .chat-message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.bot {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-bottom-left-radius: 6px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .chat-message.user {
+            background: var(--accent-gradient);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 6px;
+        }
+
+        .chat-message.typing {
+            background: rgba(124, 58, 237, 0.1);
+            align-self: flex-start;
+            border-bottom-left-radius: 6px;
+            padding: 16px 20px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .chatbot-suggestions {
+            padding: 8px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            border-top: 1px solid var(--border);
+        }
+
+        .suggestion-chip {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            color: var(--accent-light);
+            padding: 6px 12px;
+            border-radius: 980px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .suggestion-chip:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .chatbot-input-area {
+            padding: 16px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .chatbot-send {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        .chatbot-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: calc(100vw - 40px);
+                height: 500px;
+                right: -10px;
+                bottom: 80px;
+            }
+            
+            .chatbot-suggestions {
+                padding: 6px 10px;
+            }
+            
+            .suggestion-chip {
+                font-size: 0.65rem;
+                padding: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -941,16 +1284,6 @@
         </div>
     </section>
 
-    <!-- <section class="cta">
-        <div class="container">
-            <div class="cta-inner reveal">
-                <h2>Lass uns <span class="gradient-text">zusammen</span> arbeiten!</h2>
-                <p>Hast du eine Frage oder ein spannendes Projekt? Ich freue mich auf deine Nachricht.</p>
-                <a href="#contact" class="btn-primary">📧 Jetzt kontaktieren</a>
-            </div>
-        </div>
-    </section> -->
-
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
@@ -961,6 +1294,49 @@
             <p style="font-size:0.65rem;margin-top:0.3rem;">Nürnberg, Deutschland</p>
         </div>
     </footer>
+
+    <!-- KI CHATBOT -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <button class="chatbot-toggle" id="chatbotToggle" title="Chat mit Leon's Assistant">
+            🤖
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <h3>🤖 Leon's Assistant</h3>
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        Online - Bereit für Fragen
+                    </div>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">✕</button>
+            </div>
+            
+            <div class="chatbot-suggestions" id="chatbotSuggestions">
+                <span class="suggestion-chip" data-question="Was sind Leons Fähigkeiten?">💻 Fähigkeiten</span>
+                <span class="suggestion-chip" data-question="Welche Programmiersprachen kann Leon?">🚀 Skills</span>
+                <span class="suggestion-chip" data-question="Wie kann ich Leon kontaktieren?">📧 Kontakt</span>
+                <span class="suggestion-chip" data-question="Welche Klavierstücke spielt Leon?">🎹 Klavier</span>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chat-message bot">
+                    Hallo! 👋 Ich bin Leon's virtueller Assistant. Frag mich etwas über Leon, seine Fähigkeiten, Projekte oder wie du ihn kontaktieren kannst!
+                </div>
+            </div>
+            
+            <div class="chatbot-input-area">
+                <input 
+                    type="text" 
+                    class="chatbot-input" 
+                    id="chatbotInput" 
+                    placeholder="Schreib eine Nachricht..."
+                    autocomplete="off"
+                >
+                <button class="chatbot-send" id="chatbotSend">➤</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // ===== MODAL FUNCTIONS =====
@@ -1037,6 +1413,274 @@
                     }, 5000);
                 }
             });
+        }
+
+        // ===== KI CHATBOT (OHNE API - Regelbasiert) =====
+        class SmartChatbot {
+            constructor() {
+                this.chatbotToggle = document.getElementById('chatbotToggle');
+                this.chatbotWindow = document.getElementById('chatbotWindow');
+                this.chatbotClose = document.getElementById('chatbotClose');
+                this.chatbotMessages = document.getElementById('chatbotMessages');
+                this.chatbotInput = document.getElementById('chatbotInput');
+                this.chatbotSend = document.getElementById('chatbotSend');
+                this.suggestionChips = document.querySelectorAll('.suggestion-chip');
+                
+                this.isOpen = false;
+                this.isTyping = false;
+                
+                // Wissensdatenbank über Leon
+                this.knowledgeBase = {
+                    greetings: [
+                        "Hey! 👋 Schön, dass du da bist! Was möchtest du über Leon wissen?",
+                        "Hallo! 😊 Ich bin Leon's Assistant. Wie kann ich dir helfen?",
+                        "Hi! Freut mich, dass du vorbeischaust! Frag mich ruhig alles über Leon.",
+                    ],
+                    
+                    farewell: [
+                        "Tschüss! 👋 Komm bald wieder vorbei!",
+                        "Bis später! Wenn du mehr Fragen hast, ich bin immer hier! 😊",
+                        "Auf Wiedersehen! Viel Erfolg noch! 🚀",
+                    ],
+                    
+                    skills: "Leon hat vielseitige Fähigkeiten in der Webentwicklung und Programmierung:\n\n" +
+                           "🎨 Frontend:\n" +
+                           "• HTML5 (60%)\n" +
+                           "• CSS3 (60%)\n" +
+                           "• JavaScript (50%)\n" +
+                           "• React (40%)\n\n" +
+                           "⚙️ Backend:\n" +
+                           "• Python (57%)\n" +
+                           "• OOP (30%)\n\n" +
+                           "🛠️ Tools:\n" +
+                           "• VS Code (70%)\n" +
+                           "• Git (25%)\n\n" +
+                           "Aktuell lernt er: Node.js, TypeScript, APIs & Datenbanken! 📚",
+                    
+                    about: "Leon Schmidt ist ein engagierter Schüler der 10. Klasse an der Johann-Pachelbel-Realschule in Nürnberg. 🏫\n\n" +
+                           "Er verbindet seine Leidenschaft für Technologie mit Musik. Neben dem Programmieren spielt er leidenschaftlich Klavier und betreibt einen YouTube-Kanal (@pianoplayer-09).\n\n" +
+                           "Seine Stärken liegen in der Webentwicklung und Python-Programmierung, die er durch 2-jährige Zertifikatsprogramme bei Skysmart vertieft hat. 🚀",
+                    
+                    contact: "📬 So kannst du Leon erreichen:\n\n" +
+                            "📧 E-Mail: Schmidtleon970@gmail.com\n" +
+                            "📞 Telefon: +49 155 66316521\n" +
+                            "📍 Standort: Nürnberg, Deutschland\n\n" +
+                            "Oder nutze das Kontaktformular auf der Webseite! ✉️",
+                    
+                    piano: "🎹 Leon's musikalische Reise:\n\n" +
+                           "Lieblingsstücke:\n" +
+                           "• Für Elise - Beethoven\n" +
+                           "• Clair de Lune - Debussy\n" +
+                           "• River Flows In You - Yiruma\n" +
+                           "• Canon in D - Pachelbel\n\n" +
+                           "Fähigkeiten:\n" +
+                           "• Klassisches Klavier: ⭐⭐⭐⭐☆\n" +
+                           "• Moderne Lieder: ⭐⭐⭐⭐☆\n" +
+                           "• Improvisation: ⭐⭐⭐⭐☆\n\n" +
+                           "🎥 YouTube: @pianoplayer-09\n" +
+                           "Über 240 Übungsstunden!",
+                    
+                    certificates: "📜 Leons Zertifikate:\n\n" +
+                                 "1. Web-Entwicklungsprogramm (Skysmart)\n" +
+                                 "   ⏱️ 2 Jahre | 📚 120 Sitzungen\n" +
+                                 "   Skills: HTML, CSS, JavaScript, Responsive Design\n\n" +
+                                 "2. Python Programmierung (Skysmart)\n" +
+                                 "   ⏱️ 2 Jahre | 📚 120 Sitzungen\n" +
+                                 "   Skills: Python, OOP, Data Structures, Functions\n\n" +
+                                 "Beide Zertifikate zeigen seine kontinuierliche Lernbereitschaft! 🎓",
+                    
+                    projects: "🚀 Leon hat über 15 Projekte umgesetzt! Darunter:\n\n" +
+                             "• Portfolio-Webseite (diese Seite!)\n" +
+                             "• Webentwicklungs-Projekte\n" +
+                             "• Python-Programme und Skripte\n" +
+                             "• Klavier-Lernmaterialien\n\n" +
+                             "Aktuell arbeitet er an Projekten mit Node.js und TypeScript! 💡",
+                    
+                    school: "🏫 Leon besucht die 10. Klasse der Johann-Pachelbel-Realschule in Nürnberg.\n\n" +
+                           "Die Schule ist nach dem berühmten Komponisten Johann Pachelbel benannt - passend zu Leons musikalischer Leidenschaft! 🎵\n\n" +
+                           "Seine Studienzeit beträgt 4 Jahre mit kontinuierlichem Fokus auf Technologie und Programmierung.",
+                    
+                    unknown: [
+                        "Interessante Frage! 🤔 Dazu habe ich leider keine spezifischen Informationen. Aber frag mich gerne etwas über Leons Fähigkeiten, Klavierspiel oder Kontaktmöglichkeiten!",
+                        "Hmm, da bin ich überfragt. 😅 Aber ich kann dir viel über Leons Programmier-Skills, Musik oder Ausbildung erzählen!",
+                        "Gute Frage! Leider kann ich dazu nichts sagen. Möchtest du stattdessen etwas über Leons Projekte oder Zertifikate erfahren?",
+                    ]
+                };
+                
+                this.init();
+            }
+            
+            init() {
+                // Event Listener
+                this.chatbotToggle.addEventListener('click', () => this.toggleChat());
+                this.chatbotClose.addEventListener('click', () => this.closeChat());
+                this.chatbotSend.addEventListener('click', () => this.sendMessage());
+                this.chatbotInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+                
+                // Suggestion Chips
+                this.suggestionChips.forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        const question = chip.getAttribute('data-question');
+                        this.chatbotInput.value = question;
+                        this.sendMessage();
+                    });
+                });
+            }
+            
+            toggleChat() {
+                if (this.isOpen) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+            
+            openChat() {
+                this.chatbotWindow.classList.add('active');
+                this.chatbotToggle.classList.add('active');
+                this.chatbotToggle.textContent = '✕';
+                this.isOpen = true;
+                setTimeout(() => {
+                    this.chatbotInput.focus();
+                }, 300);
+            }
+            
+            closeChat() {
+                this.chatbotWindow.classList.remove('active');
+                this.chatbotToggle.classList.remove('active');
+                this.chatbotToggle.textContent = '🤖';
+                this.isOpen = false;
+            }
+            
+            async sendMessage() {
+                if (this.isTyping) return;
+                
+                const message = this.chatbotInput.value.trim();
+                if (!message) return;
+                
+                this.chatbotInput.value = '';
+                this.isTyping = true;
+                this.chatbotSend.disabled = true;
+                
+                // Benutzernachricht anzeigen
+                this.addMessage(message, 'user');
+                
+                // Tippindikator
+                const typingIndicator = this.addTypingIndicator();
+                
+                // Simulierte Verzögerung für natürlichere Antwort
+                const delay = Math.random() * 1000 + 500;
+                
+                setTimeout(() => {
+                    typingIndicator.remove();
+                    const response = this.generateResponse(message);
+                    this.addMessage(response, 'bot');
+                    this.isTyping = false;
+                    this.chatbotSend.disabled = false;
+                }, delay);
+            }
+            
+            generateResponse(message) {
+                const msg = message.toLowerCase();
+                
+                // Begrüßungen
+                if (this.containsAny(msg, ['hallo', 'hi', 'hey', 'guten tag', 'guten morgen', 'guten abend', 'moin', 'servus'])) {
+                    return this.getRandomResponse('greetings');
+                }
+                
+                // Verabschiedungen
+                if (this.containsAny(msg, ['tschüss', 'bye', 'auf wiedersehen', 'bis bald', 'ciao', 'mach\'s gut'])) {
+                    return this.getRandomResponse('farewell');
+                }
+                
+                // Fähigkeiten & Skills
+                if (this.containsAny(msg, ['fähigkeiten', 'skills', 'was kann', 'programmieren', 'programmiersprache', 'html', 'css', 'javascript', 'python', 'react'])) {
+                    return this.knowledgeBase.skills;
+                }
+                
+                // Über Leon
+                if (this.containsAny(msg, ['über', 'about', 'wer ist', 'person', 'beschreibung', 'vorstellen'])) {
+                    return this.knowledgeBase.about;
+                }
+                
+                // Kontakt
+                if (this.containsAny(msg, ['kontakt', 'email', 'mail', 'telefon', 'erreichen', 'anschreiben', 'nummer', 'adresse'])) {
+                    return this.knowledgeBase.contact;
+                }
+                
+                // Klavier & Musik
+                if (this.containsAny(msg, ['klavier', 'piano', 'musik', 'klavierstück', 'beethoven', 'debussy', 'yiruma', 'pachelbel', 'youtube'])) {
+                    return this.knowledgeBase.piano;
+                }
+                
+                // Zertifikate
+                if (this.containsAny(msg, ['zertifikat', 'ausbildung', 'kurs', 'skysmart', 'abschluss'])) {
+                    return this.knowledgeBase.certificates;
+                }
+                
+                // Projekte
+                if (this.containsAny(msg, ['projekt', 'projekte', 'arbeit', 'portfolio'])) {
+                    return this.knowledgeBase.projects;
+                }
+                
+                // Schule
+                if (this.containsAny(msg, ['schule', 'klasse', 'realschule', 'johann', 'ausbildung', 'lernen'])) {
+                    return this.knowledgeBase.school;
+                }
+                
+                // Hilfe
+                if (this.containsAny(msg, ['hilfe', 'help', 'was kannst du', 'fragen', 'optionen'])) {
+                    return "Ich kann dir Fragen beantworten zu:\n\n" +
+                           "💻 Leons Fähigkeiten & Skills\n" +
+                           "🎹 Klavierspiel & Musik\n" +
+                           "📜 Zertifikate & Ausbildung\n" +
+                           "📧 Kontaktmöglichkeiten\n" +
+                           "🚀 Projekte\n" +
+                           "🏫 Schule\n\n" +
+                           "Klick auch gerne auf die Vorschläge oben! 😊";
+                }
+                
+                // Standardantwort
+                return this.getRandomResponse('unknown');
+            }
+            
+            containsAny(text, keywords) {
+                return keywords.some(keyword => text.includes(keyword));
+            }
+            
+            getRandomResponse(category) {
+                const responses = this.knowledgeBase[category];
+                if (Array.isArray(responses)) {
+                    return responses[Math.floor(Math.random() * responses.length)];
+                }
+                return responses;
+            }
+            
+            addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${sender}`;
+                messageDiv.textContent = text;
+                this.chatbotMessages.appendChild(messageDiv);
+                this.scrollToBottom();
+            }
+            
+            addTypingIndicator() {
+                const indicator = document.createElement('div');
+                indicator.className = 'chat-message typing';
+                indicator.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+                this.chatbotMessages.appendChild(indicator);
+                this.scrollToBottom();
+                return indicator;
+            }
+            
+            scrollToBottom() {
+                this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
+            }
         }
 
         // ===== PARTIKELSYSTEM =====
@@ -1179,6 +1823,11 @@
                 const t = document.querySelector(this.getAttribute('href'));
                 if (t) window.scrollTo({ top: t.offsetTop - 60, behavior: 'smooth' });
             });
+        });
+
+        // Chatbot initialisieren
+        document.addEventListener('DOMContentLoaded', () => {
+            new SmartChatbot();
         });
 
         console.log('%c🍎 %cLeon Schmidt %c– Portfolio','font-size:1.2em;font-weight:bold;color:#a78bfa;','color:#f5f5f7;','color:#86868b;');
