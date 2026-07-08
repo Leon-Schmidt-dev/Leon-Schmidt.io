@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 // OpenAI Client mit API-Key aus .env
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY=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,
 });
 
 // System-Prompt für den KI-Assistenten
