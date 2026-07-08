@@ -1300,14 +1300,14 @@
         </div>
     </footer>
 
-    <!-- KI CHATBOT -->
+    <!-- KI CHATBOT MIT OPENAI API -->
     <div class="chatbot-container" id="chatbotContainer">
         <button class="chatbot-toggle" id="chatbotToggle" title="Chat mit Leon's Assistant">🤖</button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
                 <div class="chatbot-header-info">
                     <h3>🤖 Leon's Assistant</h3>
-                    <div class="status"><span class="status-dot"></span>Online - Bereit für Fragen</div>
+                    <div class="status"><span class="status-dot"></span>KI-gestützt</div>
                 </div>
                 <button class="chatbot-close" id="chatbotClose">✕</button>
             </div>
@@ -1321,7 +1321,7 @@
             
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="chat-message bot">
-                    Hallo! 👋 Ich bin Leon's virtueller Assistant. Frag mich etwas über Leon, seine IT-Fähigkeiten, Klavierspiel oder wie du ihn kontaktieren kannst!
+                    Hallo! 👋 Ich bin Leon's KI-Assistent. Frag mich alles über Leon, seine IT-Fähigkeiten, Klavierspiel oder wie du ihn kontaktieren kannst!
                 </div>
             </div>
             
@@ -1398,7 +1398,7 @@
             });
         }
 
-        // ===== KI CHATBOT (4 THEMEN: IT-Skills, Klavier, Kontakt, Über Leon) =====
+        // ===== KI CHATBOT MIT OPENAI API =====
         class SmartChatbot {
             constructor() {
                 this.chatbotToggle = document.getElementById('chatbotToggle');
@@ -1411,109 +1411,25 @@
                 this.isOpen = false;
                 this.isTyping = false;
                 
-                // ═══════════════════════════════════════
-                // WISSENSDATENBANK - 4 Themen
-                // ═══════════════════════════════════════
-                this.knowledgeBase = {
-                    greetings: [
-                        "Hey! 👋 Schön, dass du da bist! Frag mich zu IT-Skills, Klavier, Kontakt oder über Leon!",
-                        "Hallo! 😊 Ich bin Leon's Assistant. Wie kann ich dir helfen?",
-                        "Hi! Freut mich! Klick auf einen Button oder schreib mir deine Frage!",
-                    ],
-                    farewell: [
-                        "Tschüss! 👋 Komm bald wieder vorbei!",
-                        "Bis später! Wenn du mehr Fragen hast, ich bin immer hier! 😊",
-                        "Auf Wiedersehen! Viel Erfolg noch! 🚀",
-                    ],
-                    
-                    // 💻 IT-SKILLS
-                    itSkills: "💻 LEONS IT-SKILLS:\n\n" +
-                             "🎨 Frontend:\n" +
-                             "• HTML5 – 60%\n" +
-                             "• CSS3 – 60%\n" +
-                             "• JavaScript – 50%\n" +
-                             "• React – 40%\n\n" +
-                             "⚙️ Backend:\n" +
-                             "• Python – 57%\n" +
-                             "• OOP – 30%\n" +
-                             "• File Systems – 35%\n\n" +
-                             "🛠️ Tools:\n" +
-                             "• VS Code – 70%\n" +
-                             "• Git – 25%\n" +
-                             "• Responsive Design – 46%\n\n" +
-                             "📊 Erfolge:\n" +
-                             "• 240+ Übungsstunden (IT)\n" +
-                             "• 2 Zertifikate (Skysmart)\n" +
-                             "• 4 Jahre Studienzeit\n" +
-                             "• 15+ Projekte\n\n" +
-                             "📚 Lernt aktuell: Node.js, TypeScript, APIs, Datenbanken!",
-                    
-                    // 🎹 KLAVIER
-                    piano: "🎹 LEONS KLAVIER:\n\n" +
-                           "Lieblingsstücke:\n" +
-                           "• Für Elise – Beethoven (Mittel)\n" +
-                           "• Clair de Lune – Debussy (Fortg.)\n" +
-                           "• River Flows In You – Yiruma (Mittel)\n" +
-                           "• Canon in D – Pachelbel (Mittel)\n\n" +
-                           "Fähigkeiten:\n" +
-                           "• Klassisches Klavier: ⭐⭐⭐⭐☆\n" +
-                           "• Moderne Lieder: ⭐⭐⭐⭐☆\n" +
-                           "• Improvisation: ⭐⭐⭐⭐☆\n\n" +
-                           "🎥 YouTube-Kanal:\n" +
-                           "@pianoplayer-09\n\n" +
-                           "Leon spielt seit mehreren Jahren Klavier als kreativen Ausgleich zum Programmieren!",
-                    
-                    // 📧 KONTAKT
-                    contact: "📧 LEON KONTAKTIEREN:\n\n" +
-                             "📧 E-Mail:\n" +
-                             "Schmidtleon970@gmail.com\n\n" +
-                             "📞 Telefon:\n" +
-                             "+49 155 66316521\n\n" +
-                             "📍 Standort:\n" +
-                             "Nürnberg, Deutschland\n" +
-                             "Zerzabelshofer Haupt Straße 12\n\n" +
-                             "✉️ Oder nutze das Kontaktformular\n" +
-                             "auf der Webseite!\n\n" +
-                             "📱 Social Media:\n" +
-                             "YouTube: @pianoplayer-09",
-                    
-                    // 👤 ÜBER LEON
-                    about: "👤 ÜBER LEON SCHMIDT:\n\n" +
-                           "🏫 Schule:\n" +
-                           "10. Klasse\n" +
-                           "Johann-Pachelbel-Realschule\n" +
-                           "Nürnberg\n\n" +
-                           "💻 IT:\n" +
-                           "Web-Entwickler & Python-Programmierer\n" +
-                           "2 Zertifikate von Skysmart\n" +
-                           "240+ Übungsstunden\n" +
-                           "4 Jahre Studienzeit\n" +
-                           "15+ Projekte\n\n" +
-                           "🎹 Musik:\n" +
-                           "Leidenschaftlicher Pianist\n" +
-                           "YouTube: @pianoplayer-09\n\n" +
-                           "📌 Sprachen: 3+\n" +
-                           "📌 Standort: Nürnberg, Deutschland\n\n" +
-                           "✨ Leon verbindet Technologie mit Musik!",
-                    
-                    // Hilfe
-                    help: "📋 THEMEN ZUR AUSWAHL:\n\n" +
-                          "💻 IT-Skills\n" +
-                          "→ Leons Programmiersprachen & Erfolge\n\n" +
-                          "🎹 Klavier\n" +
-                          "→ Lieblingsstücke & Fähigkeiten\n\n" +
-                          "📧 Kontakt\n" +
-                          "→ E-Mail, Telefon, Adresse\n\n" +
-                          "👤 Über Leon\n" +
-                          "→ Persönliche Infos & Hintergrund\n\n" +
-                          "Klick einfach auf einen Button oben! 😊",
-                    
-                    unknown: [
-                        "Dazu habe ich leider keine Infos. 😅 Frag mich zu IT-Skills, Klavier, Kontakt oder über Leon!",
-                        "Hmm, da bin ich überfragt. 🤔 Klick auf einen der Buttons oder frag zu den 4 Themen!",
-                        "Keine Antwort darauf. Aber ich kann dir zu IT, Klavier, Kontakt oder Leon's Person helfen! 💡",
-                    ]
-                };
+                // OpenAI API Key
+                this.apiKey = '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';
+                
+                // System-Prompt für den KI-Assistenten
+                this.systemPrompt = `Du bist ein freundlicher KI-Assistent für Leon Schmidts Portfolio-Website. 
+                Du antwortest auf Deutsch und gibst Informationen über Leon Schmidt, einen Schüler und Entwickler aus Nürnberg.
+                
+                Wichtige Fakten über Leon:
+                - Leon Schmidt ist Schüler in der 10. Klasse an der Johann-Pachelbel-Realschule in Nürnberg.
+                - Er hat 2 Zertifikate von Skysmart (Web-Entwicklung und Python).
+                - Seine IT-Skills: HTML5 (60%), CSS3 (60%), JavaScript (50%), React (40%), Python (57%), Git (25%), VS Code (70%).
+                - Er hat 240+ Übungsstunden in IT, 4 Jahre Studienzeit und 15+ Projekte.
+                - Er spielt leidenschaftlich Klavier (Klassik, moderne Lieder, Improvisation).
+                - Lieblingsstücke: Für Elise (Beethoven), Clair de Lune (Debussy), River Flows In You (Yiruma), Canon in D (Pachelbel).
+                - YouTube-Kanal: @pianoplayer-09
+                - Kontakt: Schmidtleon970@gmail.com, +49 155 66316521, Nürnberg, Deutschland.
+                - Lernt aktuell: Node.js, TypeScript, APIs, Datenbanken.
+                
+                Sei hilfreich, freundlich und antworte prägnant. Bei Fragen, die nichts mit Leon zu tun haben, erkläre höflich, dass du nur über Leon Auskunft geben kannst.`;
                 
                 this.init();
             }
@@ -1563,56 +1479,48 @@
                 this.chatbotSend.disabled = true;
                 this.addMessage(message, 'user');
                 const typingIndicator = this.addTypingIndicator();
-                const delay = Math.random() * 800 + 400;
-                setTimeout(() => {
+                
+                try {
+                    const response = await this.callOpenAI(message);
                     typingIndicator.remove();
-                    this.addMessage(this.generateResponse(message), 'bot');
+                    this.addMessage(response, 'bot');
+                } catch (error) {
+                    typingIndicator.remove();
+                    this.addMessage('❌ Entschuldigung, es gab ein Problem mit der KI. Bitte versuche es später erneut. 😅', 'bot');
+                    console.error('OpenAI Fehler:', error);
+                } finally {
                     this.isTyping = false;
                     this.chatbotSend.disabled = false;
-                }, delay);
+                }
             }
             
-            generateResponse(message) {
-                const msg = message.toLowerCase();
+            async callOpenAI(userMessage) {
+                const messages = [
+                    { role: 'system', content: this.systemPrompt },
+                    { role: 'user', content: userMessage }
+                ];
                 
-                // 💻 IT-SKILLS (muss VOR Begrüßung geprüft werden, wegen "sind" etc.)
-                if (this.containsAny(msg, ['it-skill','it-fähigkeit','skill','fähigkeit','programmier','html','css','javascript','python','react','node','typescript','frontend','backend','tool','git','vscode','responsive','code','entwickler','web-entwickler','programmiersprache','technisch','it','erfolg','erfolge','übungsstunde','projekt','zertifikat','studienjahr','skysmart','oop','file'])) {
-                    return this.knowledgeBase.itSkills;
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: messages,
+                        max_tokens: 300,
+                        temperature: 0.7
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'API-Fehler');
                 }
                 
-                // 🎹 KLAVIER
-                if (this.containsAny(msg, ['klavier','piano','musik','beethoven','debussy','yiruma','pachelbel','youtube','stück','lied','komponist','musikalisch','pianist','improvisation','klassisch'])) {
-                    return this.knowledgeBase.piano;
-                }
-                
-                // 📧 KONTAKT
-                if (this.containsAny(msg, ['kontakt','email','mail','telefon','nummer','adresse','standort','erreichen','anschreiben','social'])) {
-                    return this.knowledgeBase.contact;
-                }
-                
-                // 👤 ÜBER LEON
-                if (this.containsAny(msg, ['über','about','leon','person','wer ist','beschreibung','vorstellen','erzähl','hintergrund','schule','klasse','realschule','johann','nürnberg','schüler'])) {
-                    return this.knowledgeBase.about;
-                }
-                
-                // Begrüßung (erst NACH den Themen-Prüfungen!)
-                if (this.containsAny(msg, ['hallo','hi','hey','guten tag','moin','servus'])) return this.getRandom('greetings');
-                
-                // Verabschiedung
-                if (this.containsAny(msg, ['tschüss','bye','ciao','mach\'s gut','bis bald'])) return this.getRandom('farewell');
-                
-                // HILFE
-                if (this.containsAny(msg, ['hilfe','help','was kannst du','themen','optionen','möglichkeiten','info'])) {
-                    return this.knowledgeBase.help;
-                }
-                
-                return this.getRandom('unknown');
-            } 
-            
-            containsAny(text, keywords) { return keywords.some(k => text.includes(k)); }
-            getRandom(cat) {
-                const r = this.knowledgeBase[cat];
-                return Array.isArray(r) ? r[Math.floor(Math.random() * r.length)] : r;
+                const data = await response.json();
+                return data.choices[0].message.content.trim();
             }
             
             addMessage(text, sender) {
@@ -1780,7 +1688,8 @@
             new SmartChatbot();
         });
 
-        console.log('%c🍎 %cLeon Schmidt %c– Portfolio','font-size:1.2em;font-weight:bold;color:#a78bfa;','color:#f5f5f7;','color:#86868b;');
+        console.log('%c🍎 %cLeon Schmidt %c– Portfolio mit KI-Chatbot','font-size:1.2em;font-weight:bold;color:#a78bfa;','color:#f5f5f7;','color:#86868b;');
+        console.log('%c🤖 KI-Assistent mit OpenAI API aktiviert','color:#10b981;font-weight:bold;');
     </script>
 </body>
 </html>
