@@ -386,18 +386,20 @@
             .about-grid { grid-template-columns: 1fr 1.3fr; }
         }
         
+        /* ===== BILD-DARSTELLUNG – DEUTLICH GRÖSSER & SEITENANPASSUNG ===== */
         .profile-image-wrapper {
             position: relative;
             border-radius: var(--radius);
             overflow: hidden;
-            aspect-ratio: 1 / 1;
             background: var(--bg-card);
             border: 2px solid rgba(124, 58, 237, 0.3);
             box-shadow: 0 0 60px rgba(124, 58, 237, 0.1);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 380px;
-            margin: 0 auto;
+            /* 1️⃣ BILD VIEL GRÖSSER: Breite auf 100% und max-width auf 480px erhöht */
             width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
         }
         .profile-image-wrapper:hover {
             border-color: rgba(124, 58, 237, 0.7);
@@ -728,6 +730,8 @@
             .cta-inner h2{font-size:1.4rem}
             .cta-inner{padding:1.5rem 1rem}
             .music-grid{grid-template-columns:1fr}
+            /* 2️⃣ BILD AUF MOBIL: max-width auf 100% (passt sich der Breite an) */
+            .profile-image-wrapper { max-width: 100%; }
         }
 
         /* ===== KI CHATBOT STYLES ===== */
