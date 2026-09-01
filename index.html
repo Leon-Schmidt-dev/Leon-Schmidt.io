@@ -5797,10 +5797,13 @@ body.light .chatbot-window {
 
             <div class="contact-card reveal">
 
-                <!--
-                    HIER DEINEN WEB3FORMS KEY EINTRAGEN.
-                    NICHT ÖFFENTLICH TEILEN.
-                -->
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="c8058d61-1817-4827-97db-fea4b0b501ff">
+                    <input type="text" name="name" required>
+                    <input type="email" name="email" required>
+                    <textarea name="message" required></textarea>
+                    <button type="submit">Submit Form</button>
+                </form>
 
                 <form
                     id="contactForm"
