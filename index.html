@@ -2948,6 +2948,18 @@ body.light .profile-badge {
 
     margin-bottom:
         14px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+
+    gap:
+        6px 12px;
 }
 
 .footer-links a {
@@ -3772,6 +3784,234 @@ body.light .chatbot-window {
         transform:
             translateY(0);
     }
+}
+
+
+/* =========================================================
+   COOKIE BANNER
+========================================================= */
+
+.cookie-banner {
+
+    position:
+        fixed;
+
+    bottom:
+        20px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        6000;
+
+    width:
+        min(
+            90%,
+            760px
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(10,10,14,.92);
+
+    backdrop-filter:
+        blur(24px)
+        saturate(150%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(150%);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+    padding:
+        22px 28px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        16px 20px;
+
+    transition:
+        opacity .45s var(--ease),
+        transform .45s var(--ease),
+        visibility .45s var(--ease);
+}
+
+.cookie-banner.hidden {
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transform:
+        translateX(-50%)
+        translateY(20px)
+        scale(.96);
+}
+
+.cookie-banner p {
+
+    font-size:
+        13px;
+
+    color:
+        var(--muted);
+
+    flex:
+        1 1 260px;
+
+    line-height:
+        1.6;
+}
+
+.cookie-banner p a {
+
+    color:
+        var(--purple-light);
+
+    text-decoration:
+        underline;
+
+    transition:
+        .25s ease;
+}
+
+.cookie-banner p a:hover {
+
+    color:
+        var(--text);
+}
+
+.cookie-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        10px;
+}
+
+.cookie-btn {
+
+    padding:
+        10px 20px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    font-size:
+        13px;
+
+    font-weight:
+        500;
+
+    transition:
+        .3s var(--ease);
+}
+
+.cookie-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--border-hover);
+}
+
+.cookie-btn.accept {
+
+    background:
+        var(--gradient);
+
+    border:
+        none;
+
+    color:
+        white;
+
+    box-shadow:
+        0 8px 25px rgba(124,58,237,.25);
+}
+
+.cookie-btn.accept:hover {
+
+    box-shadow:
+        0 15px 40px rgba(124,58,237,.4);
+}
+
+body.light .cookie-banner {
+
+    background:
+        rgba(255,255,255,.92);
+}
+
+@media(max-width:600px) {
+
+    .cookie-banner {
+
+        bottom:
+        10px;
+
+        padding:
+        18px 20px;
+
+        width:
+            calc(100% - 20px);
+    }
+
+    .cookie-banner p {
+
+        font-size:
+        12px;
+    }
+
+    .cookie-btn {
+
+        font-size:
+        12px;
+
+        padding:
+        8px 16px;
+    }
+
 }
 
 
@@ -6015,6 +6255,20 @@ body.light .chatbot-window {
                 Datenschutz
             </a>
 
+            <span>
+                ·
+            </span>
+
+            <a
+                href="#"
+                onclick="
+                    openModal('cookieModal');
+                    return false;
+                "
+            >
+                Cookie‑Einstellungen
+            </a>
+
         </div>
 
 
@@ -6248,6 +6502,85 @@ body.light .chatbot-window {
 
 
 <!-- =====================================================
+     COOKIE MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="cookieModal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="modal-close"
+            onclick="
+                closeModal('cookieModal');
+            "
+        >
+            ×
+        </span>
+
+
+        <h2>
+            Cookie‑Einstellungen
+        </h2>
+
+
+        <h3>
+            Was sind Cookies?
+        </h3>
+
+        <p>
+            Cookies sind kleine Textdateien, die auf
+            deinem Gerät gespeichert werden. Sie
+            helfen uns, die Webseite zu verbessern.
+        </p>
+
+
+        <h3>
+            Welche Cookies verwenden wir?
+        </h3>
+
+        <p>
+            Diese Webseite verwendet nur technisch
+            notwendige Cookies für den Betrieb
+            (z. B. Theme‑Auswahl, Cookie‑Einwilligung).
+            Es werden keine Tracking‑ oder
+            Werbe‑Cookies eingesetzt.
+        </p>
+
+
+        <h3>
+            Deine Entscheidung
+        </h3>
+
+        <p>
+            Du kannst deine Einwilligung jederzeit
+            über den Link „Cookie‑Einstellungen“
+            im Footer ändern oder widerrufen.
+        </p>
+
+
+        <hr
+            style="
+                margin:25px 0;
+                border:0;
+                border-top:1px solid var(--border);
+            "
+        >
+
+
+        <p>
+            Stand: 2026
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      CHATBOT
 ===================================================== -->
 
@@ -6371,6 +6704,51 @@ body.light .chatbot-window {
             </button>
 
         </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     COOKIE BANNER
+===================================================== -->
+
+<div
+    class="cookie-banner"
+    id="cookieBanner"
+>
+
+    <p>
+        Diese Webseite verwendet nur technisch notwendige
+        Cookies, um die Funktionalität zu gewährleisten
+        (z. B. Theme‑Auswahl).
+        <a
+            href="#"
+            onclick="
+                openModal('cookieModal');
+                return false;
+            "
+        >
+            Mehr erfahren
+        </a>
+    </p>
+
+    <div class="cookie-buttons">
+
+        <button
+            class="cookie-btn"
+            id="cookieDecline"
+        >
+            Ablehnen
+        </button>
+
+        <button
+            class="cookie-btn accept"
+            id="cookieAccept"
+        >
+            Akzeptieren
+        </button>
 
     </div>
 
@@ -8267,6 +8645,159 @@ document.querySelectorAll(
 
 
 /* =========================================================
+   COOKIE CONSENT
+========================================================= */
+
+const cookieBanner =
+    document.getElementById(
+        "cookieBanner"
+    );
+
+const cookieAccept =
+    document.getElementById(
+        "cookieAccept"
+    );
+
+const cookieDecline =
+    document.getElementById(
+        "cookieDecline"
+    );
+
+
+function getCookie(
+    name
+) {
+
+    const value =
+        `; ${document.cookie}`;
+
+    const parts =
+        value.split(
+            `; ${name}=`
+        );
+
+    if(
+        parts.length ===
+        2
+    ) {
+
+        return parts
+            .pop()
+            .split(";")
+            .shift();
+
+    }
+
+    return null;
+
+}
+
+
+function setCookie(
+    name,
+    value,
+    days
+) {
+
+    const date =
+        new Date();
+
+    date.setTime(
+        date.getTime() +
+        days *
+        24 *
+        60 *
+        60 *
+        1000
+    );
+
+    document.cookie =
+        `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+
+}
+
+
+function hideBanner() {
+
+    cookieBanner.classList.add(
+        "hidden"
+    );
+
+}
+
+
+function handleConsent(
+    accepted
+) {
+
+    setCookie(
+        "cookie-consent",
+        accepted
+            ? "accepted"
+            : "declined",
+        365
+    );
+
+    hideBanner();
+
+}
+
+
+function checkConsent() {
+
+    const consent =
+        getCookie(
+            "cookie-consent"
+        );
+
+    if(
+        consent ===
+        "accepted" ||
+        consent ===
+        "declined"
+    ) {
+
+        hideBanner();
+
+    } else {
+
+        cookieBanner.classList.remove(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+cookieAccept.addEventListener(
+    "click",
+    () => {
+
+        handleConsent(
+            true
+        );
+
+    }
+);
+
+
+cookieDecline.addEventListener(
+    "click",
+    () => {
+
+        handleConsent(
+            false
+        );
+
+    }
+);
+
+
+checkConsent();
+
+
+/* =========================================================
    PAGE READY
 ========================================================= */
 
@@ -8277,4 +8808,4 @@ document.body.classList.add(
 </script>
 
 </body>
-</html>v
+</html>
